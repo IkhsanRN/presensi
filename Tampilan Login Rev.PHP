@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Presensi Mahasiswa</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ====== Background gradasi jingga-putih ====== */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb347 0%, #fff 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ====== Efek bokeh ====== */
+    .bokeh {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 20%; animation-delay: 0s; }
+    .circle:nth-child(2) { width: 120px; height: 120px; top: 70%; left: 10%; animation-delay: 2s; }
+    .circle:nth-child(3) { width: 100px; height: 100px; top: 50%; left: 80%; animation-delay: 4s; }
+    .circle:nth-child(4) { width: 60px; height: 60px; top: 20%; left: 60%; animation-delay: 6s; }
+    .circle:nth-child(5) { width: 90px; height: 90px; top: 80%; left: 50%; animation-delay: 8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+      50% { transform: translateY(-40px) scale(1.2); opacity: 0.9; }
+    }
+
+    /* ====== Aksen pelajar ====== */
+    .student-accent {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      font-size: 4rem;
+      color: rgba(255, 255, 255, 0.3);
+      transform: rotate(-15deg);
+      z-index: 1;
+    }
+
+    .student-accent2 {
+      position: absolute;
+      bottom: 50px;
+      right: 80px;
+      font-size: 4rem;
+      color: rgba(255, 165, 0, 0.2);
+      transform: rotate(20deg);
+      z-index: 1;
+    }
+
+    /* ====== Container utama ====== */
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      width: 400px;
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1s ease;
+      z-index: 2;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ====== Logo kampus full ====== */
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,165,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(255,140,0,0.6);
+    }
+
+    /* ====== Judul ====== */
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    /* ====== Input ====== */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #ff8c00;
+      box-shadow: 0 0 8px rgba(255,140,0,0.4);
+      outline: none;
+    }
+
+    /* ====== Tombol ====== */
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #ffb347, #ff8c00);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255,140,0,0.4);
+    }
+
+    /* ====== Footer ====== */
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* ====== Animasi Masuk ====== */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bokeh">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <i class="fas fa-graduation-cap student-accent"></i>
+  <i class="fas fa-pencil-alt student-accent2"></i>
+
+  <div class="login-container">
+    <div class="logo">
+      <img src="LOGO KAMPUS.png" alt="Logo Itenas"> </div>
+
+    <h2>Login Presensi Mahasiswa</h2>
+
+    <form action="proses_login.php" method="POST">
+      <div class="form-group">
+        <label for="username">Nama Mahasiswa</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Kata Sandi</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <button type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> Masuk
+      </button>
+
+      <button type="button" class="login-btn" onclick="window.location.href='formulir.php'">
+        <i class="fas fa-user-plus"></i> Daftar
+      </button>
+    </form>
+
+    <div class="footer">
+      &copy; <?php echo date('Y'); ?> Institut Teknologi Nasional Bandung
+    </div>
+  </div>
+</body>
+</html>
