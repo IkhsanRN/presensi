@@ -29,7 +29,10 @@
                 if ($conn->connect_error) { die("Koneksi gagal: " . $conn->connect_error); }
 
                 // Ambil data dari tabel, urutkan dari yang terbaru
-                $sql = "SELECT * FROM data_absen ORDER BY waktu DESC LIMIT 50";
+                $sql = "SELECT data_absen.id, data_absen.waktu, mahasiswa.nama, mahasiswa.nim 
+                FROM data_absen 
+                JOIN mahasiswa ON data_absen.fingerprint_id = mahasiswa.fingerprint_id 
+                ORDER BY data_absen.waktu DESC LIMIT 50";  
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -37,8 +40,7 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
-                        // Nanti Anda bisa mengganti ID ini dengan nama pegawai menggunakan JOIN tabel lain
-                        echo "<td><strong>Pegawai ID #" . $row["fingerprint_id"] . "</strong></td>"; 
+                        echo "<td><strong>" . $row["nama"] . " (" . $row["nim"] . ")</strong></td>"; // Muncul Nama, bukan angka ID
                         echo "<td>" . $row["waktu"] . "</td>";
                         echo "</tr>";
                     }
