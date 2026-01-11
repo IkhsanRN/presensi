@@ -4,248 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulir Pendaftaran Mahasiswa</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
+  <!-- CSS Styles sama seperti sebelumnya -->
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      height: 150vh;
-      background: linear-gradient(135deg, #ffb347, #ffffff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    /* Elemen dekoratif */
-    .decor-book,
-    .decor-hat,
-    .student-bg {
-      position: absolute;
-      z-index: 0;
-    }
-
-    .student-bg {
-      bottom: 0;
-      right: 50px;
-      width: 230px;
-      opacity: 0.12;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .decor-book {
-      left: 30px;
-      top: 30px;
-      font-size: 90px;
-      color: rgba(255,255,255,0.25);
-      transform: rotate(-15deg);
-    }
-
-    .decor-hat {
-      top: 60px;
-      right: 30px;
-      font-size: 80px;
-      color: rgba(255,255,255,0.3);
-      transform: rotate(10deg);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    /* Kontainer Form */
-    .form-container {
-      position: relative;
-      z-index: 5;
-      background-color: rgba(255, 255, 255, 0.97);
-      padding: 45px 45px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      width: 480px; /* ukuran sedang */
-      backdrop-filter: blur(5px);
-      animation: fadeIn 0.8s ease-in-out;
-      margin: 70px 0;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .logo-container {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .logo-container img {
-      width: 180px; /* diperbesar agar jelas */
-      height: auto;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 25px;
-      font-weight: 600;
-      font-size: 24px; /* lebih besar agar mudah dibaca */
-      z-index: 10;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: #333;
-      font-size: 15px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      transition: 0.3s;
-      font-size: 15px;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: #ff8c42;
-      box-shadow: 0 0 6px rgba(255,140,66,0.3);
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 13px;
-      background: linear-gradient(to right, #ff8c42, #ffb347);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .submit-btn:hover {
-      background: linear-gradient(to right, #ff7b00, #ff9e50);
-      transform: translateY(-2px);
-    }
-
-    .back-btn {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      color: #2c3e50;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    .back-btn:hover {
-      text-decoration: underline;
-      color: #ff7b00;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #888;
-    }
-
-    /* Responsif */
-    @media (max-width: 600px) {
-      .form-container {
-        width: 90%;
-        padding: 35px 30px;
-      }
-
-      .logo-container img {
-        width: 150px;
-      }
-
-      h2 {
-        font-size: 22px;
-      }
-    }
+    /* Paste CSS dari file Formulir.PHP asli Anda di sini, atau link ke style eksternal */
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ffb347, #ffffff); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+    .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; color: #333; }
+    .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;}
+    .submit-btn { width: 100%; padding: 12px; background: #ff8c42; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+    .submit-btn:hover { background: #e67e22; }
+    h2 { text-align: center; color: #2c3e50; }
+    .back-btn { display: block; text-align: center; margin-top: 15px; color: #555; text-decoration: none; }
   </style>
 </head>
 <body>
-
-  <i class="fas fa-book-open decor-book"></i>
-  <i class="fas fa-graduation-cap decor-hat"></i>
-  <img src="logo kampus.PNG" alt="student illustration" class="student-bg">
-
   <div class="form-container">
-    <div class="logo-container">
-      <img src="logo kampus.PNG" alt="Logo Kampus">
-    </div>
-
-    <h2>Formulir Pendaftaran Mahasiswa</h2>
-
+    <h2>Daftar Mahasiswa</h2>
+    <!-- PERUBAHAN PENTING: action ke proses_daftar.php -->
     <form action="proses_daftar.php" method="POST">
       <div class="form-group">
-        <label for="nama">Nama Lengkap</label>
-        <input type="text" id="nama" name="nama" required>
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" required>
       </div>
-
       <div class="form-group">
-        <label for="nim">Nomor Induk Mahasiswa</label>
-        <input type="text" id="nim" name="nim" required>
+        <label>Nomor Induk Mahasiswa (NIM)</label>
+        <input type="text" name="nim" required>
       </div>
-
       <div class="form-group">
-        <label for="ttl">Tempat, Tanggal Lahir</label>
-        <input type="text" id="ttl" name="ttl" placeholder="Contoh: Bandung, 10 Oktober 2002" required>
+        <label>Tempat, Tanggal Lahir</label>
+        <input type="text" name="ttl" required>
       </div>
-
       <div class="form-group">
-        <label for="jurusan">Jurusan</label>
-        <input type="text" id="jurusan" name="jurusan" required>
+        <label>Jurusan</label>
+        <input type="text" name="jurusan" required>
       </div>
-
       <div class="form-group">
-        <label for="email">Email Mahasiswa</label>
-        <input type="email" id="email" name="email" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
       </div>
-
       <div class="form-group">
-        <label for="password">Kata Sandi</label>
-        <input type="password" id="password" name="password" required>
+        <label>Kata Sandi</label>
+        <input type="password" name="password" required>
       </div>
-
-      <button type="submit" class="submit-btn">
-        <i class="fas fa-paper-plane"></i> Kirim Pendaftaran
-      </button>
+      <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Daftar Sekarang</button>
     </form>
-
-    <a href="login.php" class="back-btn">
-      <i class="fas fa-arrow-left"></i> Kembali ke Halaman Login
-    </a>
-
-    <div class="footer">
-      &copy; <?php echo date('Y'); ?> Institut Teknologi Nasional Bandung
-    </div>
+    <a href="login.php" class="back-btn">Sudah punya akun? Login</a>
   </div>
 </body>
 </html>
